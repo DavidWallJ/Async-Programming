@@ -1,0 +1,23 @@
+{
+  "name": "async-programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hello-async.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidWallJ/Asynchronous-Programming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidWallJ/Asynchronous-Programming/issues"
+  },
+  "homepage": "https://github.com/DavidWallJ/Asynchronous-Programming#readme",
+  "dependencies": {
+    "request": "^2.74.0",
+    "yargs": "^3.15.0"
+  }
+}
