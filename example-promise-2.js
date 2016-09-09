@@ -34,22 +34,20 @@
 //     console.log(error);
 // });
 
-function getLocation(location) {
+function getLocation() {
     return new Promise(function(resolve, reject){
-        if(typeof location !== 'string' || location === false ){
-            reject('error message');
-        } else {
-            resolve(location);
-        }
+      resolve("Philly");
     });
 }
 
 function getWeather(location) {
     return new Promise(function(resolve, reject) {
-        resolve("It's 78 in " + location + " .");
+        resolve("It's 78 in " + location + ".");
     });
 }
 
-getLocation('Philly').then(function(location){
-    console.log("The location is" + location);
+getLocation().then(function(location){
+  return getWeather(location);
+}).then(function(weather){
+  console.log(weather);
 });
