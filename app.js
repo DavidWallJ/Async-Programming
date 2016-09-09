@@ -15,24 +15,26 @@ var argv = require('yargs')
 
 if (typeof argv.l === 'string' && argv.l.length > 0){
     console.log("Location was provided.");
-    weather(argv.l, function(weatherCallback){
-        console.log(weatherCallback);
+    weather(argv.l).then(function(currentWeather){
+        console.log(currentWeather);
     });
 } else {
     console.log('No location was provided.');
-    var acquiredLocation = location(function(getLocation){
-        if (getLocation.city !== "") {
-            weather(acquiredLocation, function(weatherCallback){
-                console.log("Weather based on location name: " + weatherCallback);
+    var acquiredLocation = location(
+        function(getLocation){
+            if (getLocation.city !== "") {
+                weather(acquiredLocation, function(weatherCallback){
+                    console.log("Weather based on location name: " + weatherCallback);
+                });
+            }
+
+            argv.l = getLocation.loc;
+            var res = argv.l.split(",");
+            weatherByLatLon(res[0], res[1], function(weatherCallback){
+                console.log("Weather based on location lat/lon: " + weatherCallback);
             });
         }
-
-        argv.l = getLocation.loc;
-        var res = argv.l.split(",");
-        weatherByLatLon(res[0], res[1], function(weatherCallback){
-            console.log("Weather based on location lat/lon: " + weatherCallback);
-        });
-    });
+    );
 
 
 }
